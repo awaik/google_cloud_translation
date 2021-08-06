@@ -3,7 +3,7 @@
 A dart wrapper on the Google Could Translation API to be used in Flutter applications. As this is
 using the http REST API it works both with Android and iOS.
 
-![](https://raw.githubusercontent.com/awaik/google_cloud_translation/blob/main/example/assets/translate_screen.gif)
+![](https://github.com/awaik/google_cloud_translation/blob/main/example/assets/translate_screen.gif?raw=true)
 
 ## How to use it
 

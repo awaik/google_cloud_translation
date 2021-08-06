@@ -1,7 +1,6 @@
 name: google_cloud_translation
 description: A new Flutter package project.
 version: 0.0.1
-author: https://github.com/awaik
 homepage: https://github.com/awaik/example_google_translate_package
 
 environment:

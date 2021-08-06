@@ -51,11 +51,13 @@ class _MyHomePageState extends State<MyHomePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                'Initial text', style: Theme.of(context).textTheme.headline3,
+                'Initial text',
+                style: Theme.of(context).textTheme.headline3,
               ),
               Text(_text),
               SizedBox(height: 30),
-              Text('Translated text', style: Theme.of(context).textTheme.headline3),
+              Text('Translated text',
+                  style: Theme.of(context).textTheme.headline3),
               Text(_translated, style: TextStyle(color: Colors.blueAccent)),
             ],
           ),

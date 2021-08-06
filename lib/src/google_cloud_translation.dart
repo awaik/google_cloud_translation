@@ -13,7 +13,8 @@ class Translation {
   /// We can inject the client required, useful for testing
   Client http = Client();
 
-  static const String _baseUrl = 'https://translation.googleapis.com/language/translate/v2';
+  static const String _baseUrl =
+      'https://translation.googleapis.com/language/translate/v2';
 
   /// Returns the value of the token in google.
   String get apiKey => _apiKey;
@@ -51,7 +52,8 @@ class Translation {
   }
 
   /// Sends the event to the mixpanel API endpoint.
-  Future<String> _translateText({required String text, required String to}) async {
+  Future<String> _translateText(
+      {required String text, required String to}) async {
     final response = await http.post(
       Uri.parse('$_baseUrl?target=$to&key=$_apiKey&q=$text'),
     );

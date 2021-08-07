@@ -24,7 +24,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     _translation = Translation(
-      apiKey: 'google_cloud_translation_api_key',
+      apiKey: 'YOUR_API_KEY',
     );
     super.initState();
   }
@@ -36,18 +36,23 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text('Translate demo'),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(
-              'initial',
-            ),
-            Text(_text),
-            SizedBox(height: 30),
-            Text('translated', style: TextStyle(color: Colors.blueAccent)),
-            Text(_translated, style: TextStyle(color: Colors.blueAccent)),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                'Initial text',
+                style: Theme.of(context).textTheme.headline3,
+              ),
+              Text(_text),
+              SizedBox(height: 30),
+              Text('Translated text',
+                  style: Theme.of(context).textTheme.headline3),
+              Text(_translated, style: TextStyle(color: Colors.blueAccent)),
+            ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -61,6 +66,5 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
 ```
 

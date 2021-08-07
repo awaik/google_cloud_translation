@@ -1,7 +1,7 @@
 name: google_cloud_translation
-description: A new Flutter package project.
-version: 0.0.1
-homepage: https://github.com/awaik/example_google_translate_package
+description: Flutter API for google cloud translation.
+version: 0.0.1+1
+homepage: https://github.com/awaik/google_cloud_translation
 
 environment:
   sdk: ">=2.12.0 <3.0.0"

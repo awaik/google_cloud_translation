@@ -2,8 +2,11 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
-import 'package:http/http.dart';
+import 'package:google_cloud_translation/src/models/translation_model.dart';
 import 'package:html_unescape/html_unescape.dart';
+import 'package:http/http.dart';
+
+export 'package:google_cloud_translation/src/models/translation_model.dart';
 
 class Translation {
   /// The Google cloud translation token associated with your project.
@@ -13,8 +16,7 @@ class Translation {
   /// We can inject the client required, useful for testing
   Client http = Client();
 
-  static const String _baseUrl =
-      'https://translation.googleapis.com/language/translate/v2';
+  static const String _baseUrl = 'https://translation.googleapis.com/language/translate/v2';
 
   /// Returns the value of the token in google.
   String get apiKey => _apiKey;
@@ -37,7 +39,7 @@ class Translation {
   /// Sends a request to translate.
   /// [text] text to translate.
   /// [to] to what language translate.
-  Future<String> translate({required String text, required String to}) async {
+  Future<TranslationModel> translate({required String text, required String to}) async {
     return _translateText(text: text, to: to);
   }
 
@@ -52,8 +54,7 @@ class Translation {
   }
 
   /// Sends the event to the mixpanel API endpoint.
-  Future<String> _translateText(
-      {required String text, required String to}) async {
+  Future<TranslationModel> _translateText({required String text, required String to}) async {
     final response = await http.post(
       Uri.parse('$_baseUrl?target=$to&key=$_apiKey&q=$text'),
     );
@@ -63,7 +64,10 @@ class Translation {
         final body = json.decode(response.body);
         final translations = body['data']['translations'] as List;
         final translation = translations.first;
-        return HtmlUnescape().convert(translation['translatedText']);
+        return TranslationModel(
+          translatedText: HtmlUnescape().convert(translation['translatedText']),
+          detectedSourceLanguage: translation['detectedSourceLanguage'],
+        );
       } on Exception catch (e) {
         _onErrorHandler('error parsing answer', e.toString());
         throw Exception();

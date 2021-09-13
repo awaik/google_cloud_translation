@@ -1,3 +1,7 @@
+## [0.0.2+1] - (2021-Sep-13).
+
+* Made formatting.
+
 ## [0.0.2] - (2021-Sep-13).
 
 * Breaking changes. Now result of translation returns with TranslationModel with two properties

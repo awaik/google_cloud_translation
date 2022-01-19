@@ -28,7 +28,7 @@ class Translation {
   /// Provides an instance of this class.
   /// The instance of the class created with this constructor will send the events on the fly.
   /// Also, if a request returns an error, this will be logged but the text will be lost.
-  /// [token] is the Mixpanel token associated with your project.
+  /// [token] is the token associated with your project.
   /// [onError] is a callback function that will be executed in case there is an error, otherwise `debugPrint` will be used.
   /// [prefsKey] key to use in the SharedPreferences. If you leave it empty a default name will be used.
   Translation({
@@ -55,7 +55,7 @@ class Translation {
     }
   }
 
-  /// Sends the event to the mixpanel API endpoint.
+  /// Sends the event to the API endpoint.
   Future<TranslationModel> _translateText(
       {required String text, required String to}) async {
     final response = await http.post(

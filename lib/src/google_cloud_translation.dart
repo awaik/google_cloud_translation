@@ -16,8 +16,8 @@ class Translation {
   /// We can inject the client required, useful for testing
   Client http = Client();
 
-  static const String _baseUrl =
-      'https://translation.googleapis.com/language/translate/v2';
+  static const String _baseUrl = 'https://translation.googleapis.com/language/translate/v2';
+  static const String _detectPath = '/detect';
 
   /// Returns the value of the token in google.
   String get apiKey => _apiKey;
@@ -40,9 +40,14 @@ class Translation {
   /// Sends a request to translate.
   /// [text] text to translate.
   /// [to] to what language translate.
-  Future<TranslationModel> translate(
-      {required String text, required String to}) async {
+  Future<TranslationModel> translate({required String text, required String to}) async {
     return _translateText(text: text, to: to);
+  }
+
+  /// Detects source lang.
+  /// [text] text to detect.
+  Future<TranslationModel> detectLang({required String text}) async {
+    return _detectLang(text: text);
   }
 
   /// Proxies the error to the callback function provided or to standard `debugPrint`.
@@ -55,7 +60,7 @@ class Translation {
     }
   }
 
-  /// Sends the event to the API endpoint.
+  /// Sends the text to translate to the API endpoint.
   Future<TranslationModel> _translateText(
       {required String text, required String to}) async {
     final response = await http.post(
@@ -70,6 +75,30 @@ class Translation {
         return TranslationModel(
           translatedText: HtmlUnescape().convert(translation['translatedText']),
           detectedSourceLanguage: translation['detectedSourceLanguage'],
+        );
+      } on Exception catch (e) {
+        _onErrorHandler('error parsing answer', e.toString());
+        throw Exception();
+      }
+    } else {
+      _onErrorHandler('${response.statusCode}', response.body);
+      throw Exception();
+    }
+  }
+
+  /// Sends the text to detect language to the API endpoint.
+  Future<TranslationModel> _detectLang({required String text}) async {
+    final response = await http.post(
+      Uri.parse('$_baseUrl$_detectPath?&key=$_apiKey&q=$text'),
+    );
+
+    if (response.statusCode == 200) {
+      try {
+        final body = json.decode(response.body);
+        final detection = body['data']['detections'] as List;
+        return TranslationModel(
+          translatedText: '',
+          detectedSourceLanguage: detection.first.first['language'],
         );
       } on Exception catch (e) {
         _onErrorHandler('error parsing answer', e.toString());

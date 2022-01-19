@@ -1,4 +1,4 @@
-## [0.0.2+1] - (2021-Sep-13).
+## [0.0.3] - (2021-Sep-13).
 
 * Added detectLang option - detects source language without translation. Look the example for the more info.
 

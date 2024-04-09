@@ -27,8 +27,10 @@ class _MyHomePageState extends State<MyHomePage> {
   late Translation _translation;
   final String _text =
       'Toda persona tiene derecho a la educación. La educación debe ser gratuita, al menos en lo concerniente a la instrucción elemental y fundamental. La instrucción elemental será obligatoria. La instrucción técnica y profesional habrá de ser generalizada; el acceso a los estudios superiores será igual para todos, en función de los méritos respectivos.';
-  TranslationModel _translated = TranslationModel(translatedText: '', detectedSourceLanguage: '');
-  TranslationModel _detected = TranslationModel(translatedText: '', detectedSourceLanguage: '');
+  TranslationModel _translated =
+      TranslationModel(translatedText: '', detectedSourceLanguage: '');
+  TranslationModel _detected =
+      TranslationModel(translatedText: '', detectedSourceLanguage: '');
 
   @override
   void initState() {
@@ -57,11 +59,15 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               Text(_text),
               SizedBox(height: 30),
-              Text('Translated text', style: Theme.of(context).textTheme.headline3),
-              Text(_translated.translatedText, style: TextStyle(color: Colors.blueAccent)),
-              Text('Detected language - ${_translated.detectedSourceLanguage}', style: TextStyle(color: Colors.red)),
+              Text('Translated text',
+                  style: Theme.of(context).textTheme.headline3),
+              Text(_translated.translatedText,
+                  style: TextStyle(color: Colors.blueAccent)),
+              Text('Detected language - ${_translated.detectedSourceLanguage}',
+                  style: TextStyle(color: Colors.red)),
               const SizedBox(height: 20),
-              Text('Language detected with detectLang, without translation - ${_detected.detectedSourceLanguage}',
+              Text(
+                  'Language detected with detectLang, without translation - ${_detected.detectedSourceLanguage}',
                   style: TextStyle(color: Colors.red)),
             ],
           ),

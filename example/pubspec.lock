@@ -70,6 +70,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_lints:
+    dependency: "direct dev"
+    description:
+      name: flutter_lints
+      sha256: "3f41d009ba7172d5ff9be5f6e6e6abb4300e263aab8866d2a0842ed2a70f8f0c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.0.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -89,7 +97,7 @@ packages:
     source: hosted
     version: "4.2.2"
   google_cloud_translation:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       path: ".."
       relative: true
@@ -143,6 +151,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.1"
+  lints:
+    dependency: transitive
+    description:
+      name: lints
+      sha256: "976c774dd944a42e83e2467f4cc670daef7eed6295b10b36ae8c85bcbf828235"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.0.0"
   matcher:
     dependency: transitive
     description:
@@ -293,5 +309,5 @@ packages:
     source: hosted
     version: "5.5.4"
 sdks:
-  dart: ">=3.5.2 <4.0.0"
+  dart: ">=3.6.0-218.0.dev <4.0.0"
   flutter: ">=3.24.2"

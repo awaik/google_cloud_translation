@@ -1,3 +1,7 @@
+## [0.0.4]
+
+- Updated dependencies
+
 ## [0.0.3+1]
 
 - Updated compile and target sdk version to 33 (thanks to https://github.com/devendroid)
